@@ -15,6 +15,11 @@ class Graph:
     def add_vertex(self, new_vertex):
         self.adjacency_list[new_vertex] = []  # {vertex_1: [], vertex_2: [], ...}
 
+    def get_vertex(self, address):
+        for i in self.adjacency_list:
+            if i.label == address:
+                return i
+
     def add_directed_edge(self, from_vertex, to_vertex, weight=1.0):
         self.edge_weights[(from_vertex, to_vertex)] = weight
         # {(vertex_1,vertex_2): 484, (vertex_1,vertex_3): 626, (vertex_2,vertex_6): 1306, ...}

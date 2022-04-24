@@ -6,6 +6,7 @@ class Truck:
         self.time = 480
         self.distance = 0
         self.packages = 0
+        self.location = "4001 South 700 East"
 
     def load_package(self, package):
         if self.space:
@@ -16,10 +17,10 @@ class Truck:
         else:
             print("Cannot Load, at capacity")
 
-
     def print_load(self):
         print("\nPackages in Truck: ")
         for package in self.load:
-            print(" {}\n".format(package))
+            print(" {}".format(package))
+        print()
 
 
