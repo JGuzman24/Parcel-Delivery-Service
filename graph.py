@@ -1,3 +1,9 @@
+'''
+Vertex and Graph functions from lecture.
+Slightly modified to work correctly with program
+O(1) unless otherwise stated
+'''
+
 class Vertex:
     # Constructor for a new Vertx object. All vertex objects
     # start with a distance of positive infinity.
@@ -15,6 +21,7 @@ class Graph:
     def add_vertex(self, new_vertex):
         self.adjacency_list[new_vertex] = []  # {vertex_1: [], vertex_2: [], ...}
 
+    # O(N)
     def get_vertex(self, address):
         for i in self.adjacency_list:
             if i.label == address:
@@ -26,10 +33,12 @@ class Graph:
         self.adjacency_list[from_vertex].append(to_vertex)
         # {vertex_1: [vertex_2, vertex_3], vertex_2: [vertex_6], ...}
 
+    # WGUPS requires undirected edges
     def add_edge(self, vertex_a, vertex_b, weight=1.0):
         self.add_directed_edge(vertex_a, vertex_b, weight)
         self.add_directed_edge(vertex_b, vertex_a, weight)
 
+    # O(N)
     def get_key(self, add):
         for key in self.adjacency_list.keys():
             if key.label == add:

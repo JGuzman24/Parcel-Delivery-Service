@@ -1,11 +1,19 @@
 from hash import HashTable
-from Package import  Package
+from Package import Package
 from graph import Graph, Vertex
 import csv
 
+'''
+dynamically creates a hashtable and loads packages from a csv file
+'''
+# O(N)
 def load_package_data(file):
     with open(file) as packages:
-        my_hash = HashTable()
+        size = sum(1 for row in csv.reader(packages, delimiter=',')) - 1
+
+
+    with open(file) as packages:
+        my_hash = HashTable(size)
         pData = csv.reader(packages, delimiter=',')
         next(pData)
         for package in pData:
@@ -16,13 +24,14 @@ def load_package_data(file):
             zipC = package[4]
             deadLine = package[5]
             weight = package[6]
-            status = package[7]
+            status = "at the hub"
 
             package = Package(pID, address, city, state, zipC, deadLine, weight, status)
-
             my_hash.insert(pID, package)
-        return my_hash
 
+    return my_hash
+
+# O(N)
 def load_distance_data(file):
     with open(file) as distances:
         group = []
@@ -32,6 +41,7 @@ def load_distance_data(file):
             group.append(item)
         return group
 
+# O(N2)
 def distance_graph(file):
     distances = load_distance_data(file)
     g = Graph()
@@ -41,6 +51,7 @@ def distance_graph(file):
 
     x = 0
     y = 1
+    # O(N2)
     for i in g.adjacency_list:
         for j in g.adjacency_list:
             g.add_edge(i, j, distances[x][y])
