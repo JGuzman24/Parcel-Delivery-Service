@@ -35,11 +35,12 @@ inputs time in minutes - outputs time in standard format as string
 def get_time(time):
     hours = time // 60
     minutes = time % 60
+    print("hours: {}, minutes: {}".format(hours, minutes))
     if hours >= 24:
         hours %= 24
     if hours == 12:
         display = "12:{:0>2d} p.m.".format(minutes)
-    if hours > 12:
+    elif hours > 12:
         display = "{:0>2d}:{:0>2d} p.m.".format(hours - 12, minutes)
     else:
         display = "{:0>2d}:{:0>2d} a.m.".format(hours, minutes)
