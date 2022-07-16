@@ -20,7 +20,7 @@ The users can select from the following actions:
 * View status of all packages at a specific time
 
 # Built With
-  * Python 3 using JetBrains' PyCharm
+  * Python 3 using JetBrains' PyCharm IDE
   * Imports standard CSV files
 
 
